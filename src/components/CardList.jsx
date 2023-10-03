@@ -1,41 +1,49 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useContext } from "react";
 import CardCafe from "./CardCafe";
-import arrow from '../assets/arrow.png'
+import { CoffeeContext } from "../context/CoffeeContext";
+import LinkArrow from "./LinkArrow";
 
-export const getCoffee = async (url) => {
-  const res = await fetch(url);
-  return res.json();
-};
-const CardList = () => {
-  const [coffee, setCoffee] = useState([]);
-  useEffect(() => {
-    getCoffee(
-      "https://cafe-de-altura.vercel.app/api/products/?offset=0&limit=4"
-    ).then((data) => {
-      setCoffee(data.products);
-    });
-  }, []);
-  const fourCoffee = coffee.slice(0, 4);
+const CardList = ({ cantCoffee, title, wrap, isShow, landing }) => {
+  const { coffeeCard, setCoffeeCard } = useContext(CoffeeContext);
+
+  const allCoffee =
+    cantCoffee === "landing" ? coffeeCard.slice(0, 4) : coffeeCard.slice(0, 9);
 
   return (
-    <div className="flex flex-col p-[2.5em] items-center gap-[2.5em]">
-        <h2 className="text-[1.5em] not-italic text-[#2A5B45] font-medium">Novedades</h2>
-      <div className="flex justify-center items-center gap-[1.5em]">
-        {fourCoffee.map((cafe) => {
-          return (
-            <CardCafe
-              key={cafe._id}
-              img={cafe.img_url}
-              name={cafe.brand}
-              price={cafe.price}
+    <div className="w-full flex flex-col items-center justify-center">
+      <div className="flex flex-col p-[2.5em] items-center justify-center gap-[2.5em] w-[80em]">
+        <h2 className="text-[1.5em] not-italic text-[#2A5B45] font-medium">
+          {title === "nov" ? "Novedades" : "Últimos orígenes"}
+        </h2>
+        <div
+          className={`flex justify-center items-center gap-[1.5em] ${
+            wrap === "store" ? "flex-wrap" : ""
+          }`}
+        >
+          {allCoffee?.map((cafe,i) => {
+            return (
+              <CardCafe
+                key={i}
+                img={cafe?.img_url}
+                name={cafe.brand}
+                price={cafe.price}
+                id={cafe._id}
+              />
+            );
+          })}
+        </div>
+
+        <section className="flex items-center gap-[1em]">
+          {isShow && (
+            <LinkArrow
+              colorArrow={"black"}
+              text={"Ver todos"}
+              colorText={"black"}
+              ruta={"ver todos"}
             />
-          );
-        })}
+          )}
+        </section>
       </div>
-      <section className="flex items-center gap-[1em]">
-        <p className="text-[0.9em] not-italic font-semibold underline">Ver todos</p>
-        <img src={arrow} alt="" className="w-[1.5em] h-[1.5em]" />
-      </section>
     </div>
   );
 };

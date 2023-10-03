@@ -1,26 +1,26 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
+import Landing from "./page/Landing";
+import Navbar from "./components/Navbar";
+import Copyrigth from "./components/Copyrigth";
+import Store from "./page/Store";
+import Basket from "./page/Basket";
 
-import './App.css'
-import CardList from './components/CardList'
-import Faq from './components/Faq'
-import Info from './components/Info'
-import Navbar from './components/Navbar'
-import Wrapper from './components/Wrapper'
 
 function App() {
-
-
   return (
-    <div>
-      <Navbar/>
-      <Wrapper/>
-      <Info/>
-      <CardList/>
-      <Faq/>
-      
-      
-      
-    </div>
-  )
+    <>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/tienda" element={<Store/>} />
+          <Route path="/cesta" element={<Basket/>} />
+        </Routes>
+        <Copyrigth/>
+      </BrowserRouter>
+    </>
+  );
 }
 
-export default App
+export default App;
