@@ -1,23 +1,22 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.css'
-import CoffeeContextProvider from './context/CoffeeContext.jsx'
-import CartContextProvider from './context/CartContext.jsx'
-import PriceContextProvider from './context/PriceContext.jsx'
-import QuantityContextProvider from './context/QuantityContext.jsx'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
+import CoffeeContextProvider from "./context/CoffeeContext.jsx";
+import CartContextProvider from "./context/CartContext.jsx";
+import QuantityContextProvider from "./context/QuantityContext.jsx";
+import { NextUIProvider } from "@nextui-org/react";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <CoffeeContextProvider>
-      <CartContextProvider>
-        <PriceContextProvider>
+    <NextUIProvider>
+      <CoffeeContextProvider>
+        <CartContextProvider>
           <QuantityContextProvider>
             <App />
           </QuantityContextProvider>
-        </PriceContextProvider>
-      </CartContextProvider>
-    </CoffeeContextProvider>
-    
-  </React.StrictMode>,
-)
+        </CartContextProvider>
+      </CoffeeContextProvider>
+    </NextUIProvider>
+  </React.StrictMode>
+);

@@ -6,6 +6,7 @@ import Count from "./Count";
 import { QuantityContext } from "../context/QuantityContext";
 import { fixed } from "../utils/fixed";
 
+
 const ModalCart = () => {
   const { cart, setCart } = useContext(CartContext);
   const {
@@ -56,6 +57,7 @@ const ModalCart = () => {
     <div className="fixed w-[37.5em] h-[40em] p-[1em] bg-[#FFEBCD] top-[4.8em] right-[0.2em] rounded-[1.5em] flex flex-col justify-center items-center gap-[1em] bg-opacity-90">
       <h1 className="text-[1.5em] not-italic font-semibold">Carrito 🛒</h1>
       <div className=" w-full h-full flex flex-col px-[1em] overflow-y-auto gap-[1em]">
+      
         {coffeInCart ? (
           cart?.map((cafe, i) => {
             return (

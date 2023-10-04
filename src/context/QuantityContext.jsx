@@ -5,9 +5,10 @@ export const QuantityContext = createContext();
 const QuantityContextProvider = ({ children }) => {
   const { cart } = useContext(CartContext);
   const [quantity, setQuantity] = useState(cart);
+  const [delivery, setDelivery] = useState(null)
 
   useEffect(() => {
-    let total = cart.reduce(
+    const total = cart.reduce(
       (acc, cafe) => {
         acc.cantidad += cafe.cantidad;
         acc.precioTotal += cafe.price * cafe.cantidad;
@@ -23,7 +24,7 @@ const QuantityContextProvider = ({ children }) => {
   }, [cart]);
 
   return (
-    <QuantityContext.Provider value={{ quantity, setQuantity }}>
+    <QuantityContext.Provider value={{ quantity, setQuantity, delivery, setDelivery }}>
       {children}
     </QuantityContext.Provider>
   );

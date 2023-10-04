@@ -3,7 +3,7 @@ import mailWhite from '../assets/mailWhite.png'
 import phone from '../assets/phone.png'
 import add from '../assets/add.png'
 import sub from '../assets/sub.png'
-import { CartContext } from '../context/CartContext'
+
 
 const Button = ({text,style,icon, handleClickAñadir, count, handleClickEliminar}) => {
  

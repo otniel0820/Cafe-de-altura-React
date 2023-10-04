@@ -3,6 +3,7 @@ import CardList from '../components/CardList'
 import Info from '../components/Info'
 import Footer from '../components/Footer'
 
+
 const Store = () => {
   return (
     <div>
