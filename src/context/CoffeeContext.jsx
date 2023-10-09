@@ -8,7 +8,7 @@ const CoffeeContextProvider = ({children}) => {
     
     useEffect(() => {
         getCoffee(
-          "https://cafe-de-altura.vercel.app/api/products/?offset=0&limit=4"
+          "https://cafe-de-altura.vercel.app/api/products"
         ).then((data) => {
           setCoffeeCard(data.products);
         });

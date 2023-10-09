@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import LinkArrow from "./LinkArrow";
-import faqArrow from "../assets/faqArrow.png";
+import faqArrowDown from '../assets/faqArrowDown.png'
 import { objFaq } from "../utils/objFaq";
 
 const Faq = () => {
@@ -35,10 +35,10 @@ const Faq = () => {
                 {element?.question}
               </h3>
               <button
-                className={`${isOpenIndex[palabra] ? "rotate-180 transition duration-1000" : "transition duration-1000"}`}
+                className={`${isOpenIndex[palabra] ? "rotate-180 transition duration-1200" : "transition duration-1200"}`}
                 
               >
-                <img src={faqArrow} alt="" />
+                <img src={faqArrowDown} alt="" />
               </button>
             </article>
             {isOpenIndex[palabra] && (
@@ -49,6 +49,19 @@ const Faq = () => {
                 </p>
               </article>
             )}
+            {/* {isOpenIndex[palabra]? 
+              <article className='transition-[opacity]  duration-[1200ms] opacity-100'>
+                <div className="my-[1em] bg-[#E3DED7] min-w-full h-[1px] "></div>
+                <p className="transition-all duration-[1200ms] ease-in-out text-[0.75em] not-italic font-normal h-[70px] ">
+                  {element.answer}
+                </p>
+              </article>
+            :<article className='transition-[opacity] duration-[1200ms]  opacity-0  '>
+            <div className="my-[1em] bg-[#E3DED7] min-w-full h-[1px] "></div>
+            <p className="transition-[height] duration-[1200ms] ease-in-out opacity-0 text-[0.75em] not-italic font-normal  h-0">
+              {element.answer}
+            </p>
+          </article>} */}
           </div>
         );
       })}

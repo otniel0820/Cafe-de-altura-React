@@ -3,9 +3,11 @@ import ProductBasket from "../components/ProductBasket";
 import DeliveryBasket from "../components/DeliveryBasket";
 import TotalBasket from "../components/TotalBasket";
 import { QuantityContext } from "../context/QuantityContext";
+import { CartContext } from "../context/CartContext";
 
 
 const Basket = () => {
+  const {cart}=useContext(CartContext)
   const {quantity : {cantidad}}=useContext(QuantityContext)
 
  

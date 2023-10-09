@@ -68,8 +68,8 @@ const ProductBasket = () => {
                   </p>
                 </div>
 
-                <p className="pl-[21em]">
-                  {fixed(cafe.price * cafe.cantidad)}€
+                <p className="pl-[21em] text-[1.2em] not-italic font-semibold">
+                  {fixed(cafe.price * cafe.cantidad)} €
                 </p>
               </div>
               <section className="w-[48.5] h-[1px] bg-[#E3DED7]"></section>

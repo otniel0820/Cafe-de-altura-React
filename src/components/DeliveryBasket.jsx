@@ -1,8 +1,9 @@
 import React, { useContext, useRef } from "react";
 import { QuantityContext } from "../context/QuantityContext";
 
+
 const DeliveryBasket = () => {
-  const {setDelivery} = useContext(QuantityContext)
+  const {delivery, setDelivery} = useContext(QuantityContext)
  
 
   
@@ -13,7 +14,10 @@ const DeliveryBasket = () => {
           if (e.target.checked=== true) {
             setDelivery('GRATIS')
           }
-        }}/>
+          
+        }}
+        defaultChecked
+        />
         <div className="flex flex-col items-start gap-[0.25em] pr-[28.9em]">
           <label htmlFor="envioGratis" className="text-[0.9em] not-italic font-semibold">
             Envío 5-7 días

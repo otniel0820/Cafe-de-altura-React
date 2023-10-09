@@ -5,8 +5,10 @@ import Links from "./Links";
 import Cart from "./Cart";
 import Telf from "./Telf";
 import { QuantityContext } from "../context/QuantityContext";
+import { CartContext } from "../context/CartContext";
 
 const Navbar = () => {
+  const {cart}=useContext(CartContext)
   const {quantity : {cantidad}}=useContext(QuantityContext)
   return (
     <div className="sticky top-0">

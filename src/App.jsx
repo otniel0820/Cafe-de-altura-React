@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar";
 import Copyrigth from "./components/Copyrigth";
 import Store from "./page/Store";
 import Basket from "./page/Basket";
+import Checkout from "./page/Checkout";
+import PedidoRealizado from "./page/PedidoRealizado";
 
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path="/tienda" element={<Store/>} />
           <Route path="/cesta" element={<Basket/>} />
+          <Route path="/checkout" element={<Checkout/>} />
+          <Route path="/pedido_realizado" element={<PedidoRealizado/>} />
         </Routes>
         <Copyrigth/>
       </BrowserRouter>

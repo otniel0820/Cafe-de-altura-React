@@ -3,11 +3,17 @@ import CardCafe from "./CardCafe";
 import { CoffeeContext } from "../context/CoffeeContext";
 import LinkArrow from "./LinkArrow";
 
-const CardList = ({ cantCoffee, title, wrap, isShow, landing }) => {
+const CardList = ({ cantCoffee, title, wrap, isShow }) => {
   const { coffeeCard, setCoffeeCard } = useContext(CoffeeContext);
 
+  const orderCoffee = coffeeCard.sort((a,b)=>(a.price - b.price))
+  const availableCoffee = orderCoffee.filter(cafe=> cafe.available!== false)
+  const unavailableCoffee = orderCoffee.filter(cafe=> cafe.available !==true)
+  const unionCoffee = availableCoffee.concat(unavailableCoffee)
+  
+
   const allCoffee =
-    cantCoffee === "landing" ? coffeeCard.slice(0, 4) : coffeeCard.slice(0, 9);
+    cantCoffee === "landing" ? unionCoffee.slice(0, 4) : unionCoffee.slice(0, 9);
 
   return (
     <div className="w-full flex flex-col items-center justify-center">
@@ -28,6 +34,7 @@ const CardList = ({ cantCoffee, title, wrap, isShow, landing }) => {
                 name={cafe.brand}
                 price={cafe.price}
                 id={cafe._id}
+                available={cafe.available}
               />
             );
           })}

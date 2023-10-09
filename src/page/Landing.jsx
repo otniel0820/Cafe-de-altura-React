@@ -6,7 +6,7 @@ import CardList from '../components/CardList'
 import Faq from '../components/Faq'
 import Direction from '../components/Direction'
 import Footer from '../components/Footer'
-import Test from '../utils/Test'
+
 
 const Landing = () => {
   return (
@@ -19,7 +19,7 @@ const Landing = () => {
       <Wrapper/>
       <Direction/>
       <Footer/>
-      <Test/>
+      
     </div>
   )
 }

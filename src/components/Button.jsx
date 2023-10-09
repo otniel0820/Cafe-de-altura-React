@@ -5,7 +5,7 @@ import add from '../assets/add.png'
 import sub from '../assets/sub.png'
 
 
-const Button = ({text,style,icon, handleClickAñadir, count, handleClickEliminar}) => {
+const Button = ({text,style,icon, handleClickAñadir, count, handleClickEliminar,handleClickPagar}) => {
  
 const handleClick= ()=>{
   if (handleClickAñadir) {
@@ -16,6 +16,9 @@ const handleClick= ()=>{
   }
   else if (handleClickEliminar) {
     handleClickEliminar()
+  }
+  else if (handleClickPagar) {
+    handleClickPagar()
   }
 }
   
@@ -28,11 +31,12 @@ const handleClick= ()=>{
   const checkout = 'flex py-[0.75em] pl-[1.5em] pr-[1.8em] items-start gap-[0.5em] rounded bg-[#2A5B45] text-[0.9em] not-italic font-semibold text-[#fff]'
   const seguirComprando = 'flex py-[0.75em] px-[1.5em] items-start gap-[0.5em] rounded bg-[] text-[#2A5B45] text-[0.9em] not-italic font-semibold'
   const addAndSub =' w-[1.5em] h-[1.5em]'
+  const agotado = 'bg-[#E3DED7] pt-[0.5em] pb-[0.6em] pl-[0.5em] pr-[1em] flex gap-[0.5em] rounded-[4px] items-center justify-center font-semibold text-white leading-4 cursor-no-drop'
  
   return (
     <div>
       
-      <button className={`${style==='nav'?nav:style==='descubrirOrigenes'?descubrirOrigenes:style==='comprarCafe'?comprarCafe:style==='añadir'?añadir:style==='footer'?footer:style==='checkout'?checkout: style=== 'seguirComprando'? seguirComprando: addAndSub}`} onClick={handleClick}><img src={icon==='tel'?phone:icon==='mail'?mailWhite: icon=== 'add'? add: icon==='sub'? sub:null} alt=""  />{text}</button>
+      <button className={`${style==='nav'?nav:style==='descubrirOrigenes'?descubrirOrigenes:style==='comprarCafe'?comprarCafe:style==='añadir'?añadir:style==='footer'?footer:style==='btnTotal'?checkout: style=== 'seguirComprando'? seguirComprando: style=== 'masMenos'?addAndSub:style==='agotado'?agotado:''}`} onClick={handleClick}><img src={icon==='tel'?phone:icon==='mail'?mailWhite: icon=== 'add'? add: icon==='sub'? sub:null} alt=""  />{text}</button>
     </div>
   )
 }
