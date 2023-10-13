@@ -41,15 +41,15 @@ const Faq = () => {
                 <img src={faqArrowDown} alt="" />
               </button>
             </article>
-            {isOpenIndex[palabra] && (
+            {/* {isOpenIndex[palabra] && (
               <article className=''>
                 <div className="my-[1em] bg-[#E3DED7] min-w-full h-[1px] "></div>
                 <p className="text-[0.75em] not-italic font-normal">
                   {element?.answer}
                 </p>
               </article>
-            )}
-            {/* {isOpenIndex[palabra]? 
+            )} */}
+            {isOpenIndex[palabra]? 
               <article className='transition-[opacity]  duration-[1200ms] opacity-100'>
                 <div className="my-[1em] bg-[#E3DED7] min-w-full h-[1px] "></div>
                 <p className="transition-all duration-[1200ms] ease-in-out text-[0.75em] not-italic font-normal h-[70px] ">
@@ -57,11 +57,10 @@ const Faq = () => {
                 </p>
               </article>
             :<article className='transition-[opacity] duration-[1200ms]  opacity-0  '>
-            <div className="my-[1em] bg-[#E3DED7] min-w-full h-[1px] "></div>
             <p className="transition-[height] duration-[1200ms] ease-in-out opacity-0 text-[0.75em] not-italic font-normal  h-0">
               {element.answer}
             </p>
-          </article>} */}
+          </article>}
           </div>
         );
       })}

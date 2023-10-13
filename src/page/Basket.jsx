@@ -24,6 +24,7 @@ const Basket = () => {
           <ProductBasket />
           <h3 className="text-[1.2em] not-italic font-semibold">Seleccionar envío</h3>
           <DeliveryBasket />
+          
         </div>
         <TotalBasket />
       </div>

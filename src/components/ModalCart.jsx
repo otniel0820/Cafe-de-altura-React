@@ -6,31 +6,32 @@ import Count from "./Count";
 import { QuantityContext } from "../context/QuantityContext";
 import { fixed } from "../utils/fixed";
 
-
 const ModalCart = () => {
-  const { cart, setCart } = useContext(CartContext);
+  const { cart, setCart, openModal, setOpenModal } = useContext(CartContext);
   const {
     quantity: { precioTotal },
   } = useContext(QuantityContext);
-  // const [modalVisible, setModalVisible]=useState(true)
-  // const modalRef= useRef(null)
 
-  // useEffect(()=>{
+  
+  const modalRef = useRef(null);
+
+  // useEffect(() => {
   //   const handleOutsideClick = (event) => {
+  //     console.log("Aqui estoy");
+
   //     if (modalRef.current && !modalRef.current.contains(event.target)) {
-  //      console.log(!modalRef.current.contains(event.target));
-  //       closeModal();
+  //       console.log(!modalRef.current.contains(event.target));
+        
+  //       setOpenModal(!openModal);
+        
   //     }
   //   };
-  //   document.addEventListener("mousedown", handleOutsideClick); 
+  //   document.addEventListener("mousedown", handleOutsideClick);
   //   return () => {
   //     document.removeEventListener("mousedown", handleOutsideClick);
   //   };
-  // },[])
+  // }, [openModal]);
 
-  // const closeModal = () => {
-  //   setModalVisible(false);
-  // };
   const coffeInCart = cart && cart.length > 0;
 
   const handleAdd = (cafeIndex) => {
@@ -73,8 +74,71 @@ const ModalCart = () => {
 
   return (
     <>
-    
-    {/* {modalVisible && <div ref={modalRef} className="fixed w-[37.5em] z-50 h-[40em] p-[1em] bg-[#FFEBCD] top-[4.8em] right-[0.2em] rounded-[1.5em] flex flex-col justify-center items-center gap-[1em] bg-opacity-90">
+      {/* {openModal && (
+        <div
+          ref={modalRef}
+          className="fixed w-[37.5em] z-50 h-[40em] p-[1em] bg-[#FFEBCD] top-[4.8em] right-[0.2em] rounded-[1.5em] flex flex-col justify-center items-center gap-[1em] bg-opacity-90"
+        >
+          <h1 className="text-[1.5em] not-italic font-semibold">Carrito 🛒</h1>
+          <div className=" w-full h-full flex flex-col px-[1em] overflow-auto scrollbar-hide gap-[1em]">
+            {coffeInCart ? (
+              cart?.map((cafe, i) => {
+                return (
+                  <div
+                    key={i}
+                    className="flex justify-around items-center
+                     gap-[2em] w-full h-[8em]"
+                  >
+                    <Count
+                      cantidad={cafe.cantidad}
+                      onSub={() => handleSub(i)}
+                      onAdd={() => handleAdd(i)}
+                    />
+                    <div className="flex justify-center items-start">
+                      <img
+                        src={cafe.urlImg}
+                        alt=""
+                        className="w-[6em] h-[6em] "
+                      />
+                    </div>
+
+                    <div className="flex flex-col gap-[0.5em]">
+                      <h3 className="flex items-start justify-start w-[12em] text-center font-semibold">
+                        {cafe.name}
+                      </h3>
+                      <p className="text-[0.9em] not-italic font-normal ">
+                        Paquete de café, 250 gr
+                      </p>
+                    </div>
+
+                    <p>{fixed(cafe.price * cafe.cantidad)}€</p>
+                  </div>
+                );
+              })
+            ) : (
+              <p className="text-[2em] not-italic font-semibold pt-[7em] text-center">
+                El carrito esta vacio
+              </p>
+            )}
+          </div>
+          <div>
+            <h1 className="text-[1.3em] not-italic font-semibold">
+              SubTotal a Pagar {fixed(precioTotal)} €
+            </h1>
+          </div>
+          <div className="flex gap-[1em]">
+            <Link to={cart.length === 0 ? null : "/cesta"}>
+              <Button text={"ir a la cesta"} style={"btnTotal"} />
+            </Link>
+            <Button
+              text={"Vaciar Carrito"}
+              style={"nav"}
+              handleClickEliminar={() => deleteCart()}
+            />
+          </div>
+        </div>
+      )} */}
+      {openModal&&<div onMouseLeave={()=>setOpenModal(false)} className="fixed w-[37.5em] z-50 h-[40em] p-[1em] bg-[#FFEBCD] top-[4.8em] right-[0.2em] rounded-[1.5em] flex flex-col justify-center items-center gap-[1em] bg-opacity-90">
       <h1 className="text-[1.5em] not-italic font-semibold">Carrito 🛒</h1>
       <div className=" w-full h-full flex flex-col px-[1em] overflow-auto scrollbar-hide gap-[1em]">
       
@@ -128,65 +192,8 @@ const ModalCart = () => {
           handleClickEliminar={() => deleteCart()}
         />
       </div>
-    </div>} */}
-    <div className="fixed w-[37.5em] z-50 h-[40em] p-[1em] bg-[#FFEBCD] top-[4.8em] right-[0.2em] rounded-[1.5em] flex flex-col justify-center items-center gap-[1em] bg-opacity-90">
-      <h1 className="text-[1.5em] not-italic font-semibold">Carrito 🛒</h1>
-      <div className=" w-full h-full flex flex-col px-[1em] overflow-auto scrollbar-hide gap-[1em]">
-      
-        {coffeInCart ? (
-          cart?.map((cafe, i) => {
-            return (
-              <div
-                key={i}
-                className="flex justify-around items-center
-                     gap-[2em] w-full h-[8em]"
-              >
-                <Count
-                  cantidad={cafe.cantidad}
-                  onSub={() => handleSub(i)}
-                  onAdd={() => handleAdd(i)}
-                />
-                <div className="flex justify-center items-start">
-                  <img src={cafe.urlImg} alt="" className="w-[6em] h-[6em] " />
-                </div>
-
-                <div className="flex flex-col gap-[0.5em]">
-                  <h3 className="flex items-start justify-start w-[12em] text-center font-semibold">
-                    {cafe.name}
-                  </h3>
-                  <p className="text-[0.9em] not-italic font-normal ">
-                    Paquete de café, 250 gr
-                  </p>
-                </div>
-
-                <p>{fixed(cafe.price * cafe.cantidad)}€</p>
-              </div>
-            );
-          })
-        ) : (
-          <p className="text-[2em] not-italic font-semibold pt-[7em] text-center">
-            El carrito esta vacio
-          </p>
-        )}
-      </div>
-      <div>
-        <h1 className="text-[1.3em] not-italic font-semibold">SubTotal a Pagar {fixed(precioTotal)} €</h1>
-      </div>
-      <div className="flex gap-[1em]">
-        
-        <Link to={cart.length===0?null: "/cesta"}>
-          <Button text={"ir a la cesta"} style={"btnTotal"} />
-        </Link>
-        <Button
-          text={"Vaciar Carrito"}
-          style={"nav"}
-          handleClickEliminar={() => deleteCart()}
-        />
-      </div>
-    </div>
+    </div>}
     </>
-    
-    
   );
 };
 

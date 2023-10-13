@@ -5,10 +5,12 @@ import DirectionForm from '../components/DirectionForm'
 import { CartContext } from '../context/CartContext'
 
 const Checkout = () => {
-  const {cart, setCart,setPago}=useContext(CartContext)
+  const {cart, setCart,setPago, registroCompra, setRegistroCompra}=useContext(CartContext)
+  
   
   const onSubmit = ()=>{
     setPago(cart)
+    setRegistroCompra(registroCompra +1)
     setCart([])
   }
   return (

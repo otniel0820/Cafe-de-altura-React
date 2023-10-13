@@ -35,7 +35,7 @@ const DeliveryBasket = () => {
             setDelivery(9)
           }
         }}/>
-        <div className="flex flex-col items-start gap-[0.25em] pr-[9.8em]">
+        <div className="flex flex-col items-start gap-[0.25em] pr-[9.5em]">
           <label htmlFor="envioPago" className="text-[0.9em] not-italic font-semibold">
             Envío urgente 24h
           </label>

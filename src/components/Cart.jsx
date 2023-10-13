@@ -1,18 +1,18 @@
-import React, { useContext, useId, useRef, useState } from "react";
+import React, { useContext, useState } from "react";
 import carr from "../assets/carr.png";
-import { CoffeeContext } from "../context/CoffeeContext";
-import CardCafe from "./CardCafe";
 import ModalCart from "./ModalCart";
+import { CartContext } from "../context/CartContext";
 
 
 const Cart = () => {
   
-  const {coffeeCard, setCoffeeCard}= useContext(CoffeeContext)
+  
   const[isOpen,setIsOpen]=useState(false)
-  const modalRef = useRef(null)
+  const {openModal, setOpenModal}=useContext(CartContext)
 
   const openCart = ()=>{
-    setIsOpen(!isOpen)
+    
+    setOpenModal(!openModal)
   }
   
   return (
@@ -24,7 +24,7 @@ const Cart = () => {
         className="flex h-[1.5em] w-[1.5em] justify-center items-center"
       />
       </button>
-      {isOpen && <ModalCart />}
+      {openModal && <ModalCart />}
         
       
       

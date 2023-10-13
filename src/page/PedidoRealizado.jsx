@@ -7,7 +7,7 @@ import Button from "../components/Button";
 import { Link } from "react-router-dom";
 
 const PedidoRealizado = () => {
-  const { pago, setPago } = useContext(CartContext);
+  const { pago, setPago, registroCompra } = useContext(CartContext);
   const {
     quantityPayment,
     delivery,
@@ -24,13 +24,13 @@ const PedidoRealizado = () => {
   }
 
   return (
-    <div className="flex p-[2.5em] flex-col items-center gap-[1.5em]  h-screen">
+    <div className="flex p-[2.5em] flex-col items-center gap-[1.5em]  min-h-screen">
       <img src={table} alt="" />
       <h1 className="text-[#2A5B45] text-[1.5em] not-italic font-medium">
         El pedido ha sido realizado con éxito
       </h1>
       <p className="text-[0.9em] not-italic font-normal w-[24em] text-center">
-        El pedido #12387 se encuentra en preparación. Lo recibirás dentro de las
+        El pedido Nº{registroCompra} se encuentra en preparación. Lo recibirás dentro de las
         fechas acordadas en tu envío. Hemos enviado un ticket a tu correo
         electrónico.
       </p>

@@ -1,11 +1,12 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
 import Wrapper from '../components/Wrapper'
 import Info from '../components/Info'
 import CardList from '../components/CardList'
 import Faq from '../components/Faq'
 import Direction from '../components/Direction'
 import Footer from '../components/Footer'
+
+
 
 
 const Landing = () => {
@@ -19,6 +20,8 @@ const Landing = () => {
       <Wrapper/>
       <Direction/>
       <Footer/>
+    
+      
       
     </div>
   )

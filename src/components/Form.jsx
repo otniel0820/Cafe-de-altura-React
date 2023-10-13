@@ -8,23 +8,22 @@ const Form = () => {
     register,
     handleSubmit,
     formState: { errors },
-    watch,
-    setvalue,
-    reset
+    trigger,
+    control,
+    reset,
   } = useForm();
-  
 
   const onSubmit = handleSubmit((data) => {
-    let actualForm = JSON.parse(localStorage.getItem('info'))|| [];
+    let actualForm = JSON.parse(localStorage.getItem("info")) || [];
     if (!Array.isArray(actualForm)) {
-    
       actualForm = [];
     }
-    actualForm.push(data)
-    localStorage.setItem('info', JSON.stringify(actualForm))
-    alert('Enviando formulario...')
-    reset()
+    actualForm.push(data);
+    localStorage.setItem("info", JSON.stringify(actualForm));
+    alert("Enviando formulario...");
+    reset();
   });
+
   return (
     <div className="flex w-[36.75em] pt-[2em] pr-[2em] pb-[2em] pl-[3em] flex-col justify-center items-center bg-[#fff] shadow-[0px 4px 4px 0px rgba(0, 0, 0, 0.25)]">
       <form
@@ -57,6 +56,7 @@ const Form = () => {
             })}
             id="nombre"
             className="flex h-[2.5em] py-[0.56em] px-[0.81em] items-center rounded-[6px] border-solid border-[1px] border-[#D1D5DB] shadow-sm w-full focus:outline-[#3F8F6B]"
+            onBlur={() => trigger("nombre")}
           />
           {errors.nombre && (
             <span className="text-[red] text-[0.7em]">
@@ -89,6 +89,7 @@ const Form = () => {
             })}
             id="email"
             className="flex h-[2.5em] py-[0.56em] px-[0.81em] items-center rounded-[6px] border-solid border-[1px] border-[#D1D5DB] shadow-sm w-full focus:outline-[#3F8F6B]"
+            onBlur={() => trigger("email")}
           />
           {errors.email && (
             <span className="text-[red] text-[0.7em]">
@@ -120,15 +121,20 @@ const Form = () => {
               {...register("telefono", {
                 required: {
                   value: true,
-                  message: 'Este campo es requerido'
+                  message: "Este campo es requerido",
+                },
+                pattern: {
+                  value: /^[0-9!@#$%^&*()_+[\]{};:'"<>,.?/~\\-]+$/,
+                  message: "Este campo solo puede tener numeros y simbolos",
                 },
               })}
               id="telefono"
               className="flex h-[2.5em] py-[0.56em] px-[0.81em] items-center border-0 focus:outline-none  w-full rounded-[6px]"
               placeholder="+1 (555) 987-6543"
+              onBlur={() => trigger("telefono")}
             />
           </div>
-            {errors.telefono && (
+          {errors.telefono && (
             <span className="text-[red] text-[0.7em]">
               {errors.telefono.message}
             </span>
@@ -138,51 +144,72 @@ const Form = () => {
           <textarea
             name=""
             id="messageArea"
-            {...register("messageArea")}
+            {...register("messageArea", {
+              required: {
+                value: true,
+                message: "Este campo es requerido",
+              },
+              minLength: {
+                value: 20,
+                message: "Debe contener al menos dos caracteres",
+              },
+              maxLength: {
+                value: 200,
+                message: "Este campo puede tener maximo 20 caracteres",
+              },
+            })}
             cols="60"
             rows="10"
             className="flex h-[7.6em] py-[0.56em] px-[0.81em] items-center rounded-[6px] border-solid border-[1px] border-[#D1D5DB] shadow-sm w-full focus:outline-[#3F8F6B] mt-[2.75em]"
             placeholder="¿En qué podemos ayudarte?"
+            onBlur={()=>trigger('messageArea')}
           ></textarea>
         </div>
+        {errors.messageArea && (
+            <span className="text-[red] text-[0.7em]">
+              {errors.messageArea.message}
+            </span>
+          )}
         <div>
           <div className="flex items-start gap-[0.75em] w-full">
-          <input
-            type="checkbox"
-            id="politicas"
-            {...register("politicas", {
-              required: {
-                value: true,
-                message: 'Debe aceptar las politicas de privacidad y los Terminos y condiciones'
-              }
-            })}
-            className="w-[1em] h-[1.25em] border-[#D1D5DB] accent-[#2A5B45]"
-          />
-          <label
-            htmlFor="politicas"
-            className="text-[0.9em] not-italic font-normal text-[#374151] w-full flex gap-[0.2em]"
-          >
-            Acepto la
-            <Link to={"/politica_de_privacidad"}>
-              <p className="text-[0.9em] not-italic font-semibold text-[#374151]">
-                Política de Privacidad
-              </p>
-            </Link>
-            y los
-            <Link to={"/terminos_y_condiciones"}>
-              <p className="text-[0.9em] not-italic font-semibold text-[#374151]">
-                Términos y condiciones.
-              </p>
-            </Link>
-          </label>
-        </div>
+            <input
+              type="checkbox"
+              id="politicas"
+              {...register("politicas", {
+                required: {
+                  value: true,
+                  message:
+                    "Debe aceptar las politicas de privacidad y los Terminos y condiciones",
+                },
+              })}
+              className="w-[1em] h-[1.25em] border-[#D1D5DB] accent-[#2A5B45]"
+              onBlur={()=>trigger('politicas')}
+            />
+            <label
+              htmlFor="politicas"
+              className="text-[0.9em] not-italic font-normal text-[#374151] w-full flex gap-[0.2em]"
+            >
+              Acepto la
+              <Link to={"/politica_de_privacidad"}>
+                <p className="text-[0.9em] not-italic font-semibold text-[#374151]">
+                  Política de Privacidad
+                </p>
+              </Link>
+              y los
+              <Link to={"/terminos_y_condiciones"}>
+                <p className="text-[0.9em] not-italic font-semibold text-[#374151]">
+                  Términos y condiciones.
+                </p>
+              </Link>
+            </label>
+          </div>
           {errors.politicas && (
             <span className="text-[red] text-[0.7em]">
               {errors.politicas?.message}
             </span>
           )}
         </div>
-        
+
         <Button style={"comprarCafe"} text={"Enviar"} />
       </form>
     </div>

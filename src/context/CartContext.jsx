@@ -3,17 +3,26 @@ import React, { createContext, useEffect, useState } from "react";
 export const CartContext = createContext();
 
 const actualCart = JSON.parse(localStorage.getItem("Coffee")) || [];
+const compra = JSON.parse(localStorage.getItem("Compra")) || [];
+const pedido = JSON.parse(localStorage.getItem("Pedido")) || 0;
+
 
 const CartContextProvider = ({ children }) => {
   const [cart, setCart] = useState(actualCart);
-  const [pago, setPago]= useState()
+  const [pago, setPago]= useState(compra)
+  const [openModal, setOpenModal]=useState(false)
+  const [registroCompra, setRegistroCompra]= useState(pedido || 0)
 
   useEffect(() => {
     localStorage.setItem("Coffee", JSON.stringify(cart));
-  }, [cart]);
+    if (cart.length === 0) {
+      localStorage.setItem("Compra", JSON.stringify(pago));
+      localStorage.setItem('Pedido', JSON.stringify(registroCompra))
+    }
+  }, [cart,pago, registroCompra]);
 
   return (
-    <CartContext.Provider value={{ cart, setCart, pago, setPago }}>
+    <CartContext.Provider value={{ cart, setCart, pago, setPago, openModal, setOpenModal,registroCompra, setRegistroCompra }}>
       {children}
     </CartContext.Provider>
   );
