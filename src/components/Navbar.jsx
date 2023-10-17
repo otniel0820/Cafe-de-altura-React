@@ -6,6 +6,7 @@ import Cart from "./Cart";
 import Telf from "./Telf";
 import { QuantityContext } from "../context/QuantityContext";
 import { CartContext } from "../context/CartContext";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const {cart}=useContext(CartContext)
@@ -17,7 +18,12 @@ const Navbar = () => {
         <Links />
         <div className="flex items-center gap-[1.5em]">
           <Telf/>
+          <Link to={'/'}>
+          
           <Button style={'nav'} text={'Iniciar sesión'}/>
+          </Link>
+          
+          
         </div>
         <div className="flex gap-[1em]">
           <Cart/>

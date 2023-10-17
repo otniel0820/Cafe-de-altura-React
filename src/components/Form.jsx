@@ -82,10 +82,6 @@ const Form = () => {
                 value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
                 message: "Correo no valido",
               },
-              // En general, un correo electrónico debe tener los siguientes elementos
-              // Empezar por el identificador o nombre del usuario ^\w+([.-_+]?\w+)*
-              // Seguido por el símbolo de la arroba @
-              // Por último, el nombre del dominio del correo \w+([.-]?\w+)*(\.\w{2,10})+$
             })}
             id="email"
             className="flex h-[2.5em] py-[0.56em] px-[0.81em] items-center rounded-[6px] border-solid border-[1px] border-[#D1D5DB] shadow-sm w-full focus:outline-[#3F8F6B]"

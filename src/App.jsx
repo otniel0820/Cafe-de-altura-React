@@ -7,6 +7,7 @@ import Store from "./page/Store";
 import Basket from "./page/Basket";
 import Checkout from "./page/Checkout";
 import PedidoRealizado from "./page/PedidoRealizado";
+import Login from "./page/Login";
 
 
 function App() {
@@ -14,8 +15,10 @@ function App() {
     <>
       <BrowserRouter>
         <Navbar />
+        
         <Routes>
-          <Route path="/" element={<Landing />} />
+          <Route path="/" element={<Login/>} />
+          <Route path="/inicio" element={<Landing />} />
           <Route path="/tienda" element={<Store/>} />
           <Route path="/cesta" element={<Basket/>} />
           <Route path="/checkout" element={<Checkout/>} />

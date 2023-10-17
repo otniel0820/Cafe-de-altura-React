@@ -3,7 +3,7 @@ import { QuantityContext } from "../context/QuantityContext";
 
 
 const DeliveryBasket = () => {
-  const {delivery, setDelivery} = useContext(QuantityContext)
+  const {setDelivery} = useContext(QuantityContext)
  
 
   

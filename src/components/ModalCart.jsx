@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Count from "./Count";
 import { QuantityContext } from "../context/QuantityContext";
 import { fixed } from "../utils/fixed";
+import sadCart from '../assets/sad-cart.svg'
 
 const ModalCart = () => {
   const { cart, setCart, openModal, setOpenModal } = useContext(CartContext);
@@ -64,12 +65,15 @@ const ModalCart = () => {
   };
 
   const deleteCart = () => {
-    const confirmDeletCart = window.confirm(
+    if (cart.length>0) {
+      const confirmDeletCart = window.confirm(
       "¿Esta seguro que quiere eliminar todos los productos?"
     );
     if (confirmDeletCart) {
       setCart([]);
     }
+    }
+    
   };
 
   return (
@@ -138,15 +142,16 @@ const ModalCart = () => {
           </div>
         </div>
       )} */}
-      {openModal&&<div onMouseLeave={()=>setOpenModal(false)} className="fixed w-[37.5em] z-50 h-[40em] p-[1em] bg-[#FFEBCD] top-[4.8em] right-[0.2em] rounded-[1.5em] flex flex-col justify-center items-center gap-[1em] bg-opacity-90">
-      <h1 className="text-[1.5em] not-italic font-semibold">Carrito 🛒</h1>
+      {openModal&&<div onMouseLeave={()=>setOpenModal(false)} className="fixed w-[37.5em] z-50 h-[40em] p-[1em] bg-[#FFEBCD] top-[4.8em] right-[0.2em] rounded-[1.5em] flex flex-col justify-center items-center gap-[1em] bg-opacity-90 border-double border-4 border-[#FFBB1D] shadow-lg shadow-slate-500">
+      <h1 className="text-[1.5em] not-italic font-semibold " >Carrito 🛒</h1>
       <div className=" w-full h-full flex flex-col px-[1em] overflow-auto scrollbar-hide gap-[1em]">
       
         {coffeInCart ? (
           cart?.map((cafe, i) => {
             return (
-              <div
-                key={i}
+              <div key={i} className="flex flex-col gap-[0.5em] w-full">
+                <div
+                
                 className="flex justify-around items-center
                      gap-[2em] w-full h-[8em]"
               >
@@ -169,15 +174,25 @@ const ModalCart = () => {
                 </div>
 
                 <p>{fixed(cafe.price * cafe.cantidad)}€</p>
+                
               </div>
+              <section className="w-[48.5] h-[1px] bg-[#E3DED7]"></section>
+              </div>
+              
+              
             );
           })
         ) : (
-          <p className="text-[2em] not-italic font-semibold pt-[7em] text-center">
+          <div className="flex flex-col justify-center items-center gap-3 pt-[6em]">
+            <img src={sadCart} alt="" className="w-[8em] h-[8em]" />
+          <p className="text-[2em] not-italic font-semibold text-center">
             El carrito esta vacio
           </p>
+          </div>
+          
         )}
       </div>
+      <section className="w-full h-[1px] bg-[black]"></section>
       <div>
         <h1 className="text-[1.3em] not-italic font-semibold">SubTotal a Pagar {fixed(precioTotal)} €</h1>
       </div>
@@ -188,7 +203,6 @@ const ModalCart = () => {
         </Link>
         <Button
           text={"Vaciar Carrito"}
-          style={"nav"}
           handleClickEliminar={() => deleteCart()}
         />
       </div>
