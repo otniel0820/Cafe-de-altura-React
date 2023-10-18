@@ -10,6 +10,7 @@ const Form = () => {
     formState: { errors },
     trigger,
     control,
+    watch,
     reset,
   } = useForm();
 

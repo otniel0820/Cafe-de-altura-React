@@ -8,7 +8,7 @@ const Wrapper = ({ section }) => {
   return (
     <div>
       {section === "taza" ? (
-        <div className="flex justify-between items-center gap-[1.5em] py-[3em] px-[2.5em]">
+        <div className="flex justify-center items-center gap-[10em] py-[3em] px-[2.5em]">
           <section className="flex flex-col items-start gap-[1em] w-[36.75em]">
             <h3 className="text-[1.1em] not-italic font-semibold  text-[#2A5B45]">
               De la planta a tu taza
@@ -40,7 +40,7 @@ const Wrapper = ({ section }) => {
       ) : (
         <div className="flex py-[2.8em] px-[2.5em] justify-between items-center
         ">
-          <section className="flex justify-between items-center w-[100%] ">
+          <section className="flex justify-center gap-[10em] items-center w-[100%] ">
             <div className="w-[28em] flex flex-col gap-[1em]">
               <h2 className="text-[1.5em] not-italic font-medium text-[#2A5B45]">
                 Pruébalo en nuestro coffee shop

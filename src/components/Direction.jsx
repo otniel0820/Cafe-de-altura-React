@@ -8,7 +8,7 @@ import Form from "./Form";
 const Direction = () => {
   return (
     <div className="bg-[#E3DED7] px-[2.3em] ">
-      <article className="flex justify-between items-center gap-[2.5em]">
+      <article className="flex justify-center items-center gap-[1.5em]">
         <section className="flex w-[36.75em] flex-col items-start gap-[2em]">
           <div className="flex flex-col items-start gap-[0.75em]">
             <h3 className="text-[1.1em] not-italic font-semibold">
@@ -45,7 +45,7 @@ const Direction = () => {
               </div>
             </article>
             <article>
-                <p className="text-[0.8em] not-italic font-normal text-[#6B7280]">¿Buscas un trabajo? <Link to={'/ofertas'} className="text-[1.1em] not-italic font-bold underline text-[#111827]">Ver nuestras ofertas.</Link> </p>
+                <p className="text-[0.8em] not-italic font-normal text-[#6B7280]">¿Buscas un trabajo? <Link to={'/ofertas_trabajo'} className="text-[1.1em] not-italic font-bold underline text-[#111827]">Ver nuestras ofertas.</Link> </p>
             </article>
           </div>
         </section>

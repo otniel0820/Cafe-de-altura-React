@@ -26,10 +26,10 @@ const Footer = () => {
             <Link to={'/politicas_de_privacidad'}>
                 <p className="text-[0.9em] not-italic font-semibold text-[#fff]">Política de privacidad</p>
             </Link>
-            <Link to={'/Política_de_cookies'}>
+            <Link to={'/política_de_cookies'}>
                 <p className="text-[0.9em] not-italic font-semibold text-[#fff]">Política de cookies</p>
             </Link>
-            <Link to={'/Términos_y_condiciones'}>
+            <Link to={'/términos_y_condiciones'}>
                 <p className="text-[0.9em] not-italic font-semibold text-[#fff]">Términos y condiciones</p>
             </Link>
 

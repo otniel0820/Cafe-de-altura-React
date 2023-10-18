@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import mailWhite from '../assets/mailWhite.png'
 import phone from '../assets/phone.png'
 import add from '../assets/add.png'

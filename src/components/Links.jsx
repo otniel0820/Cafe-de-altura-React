@@ -19,14 +19,14 @@ const Links = ({direction}) => {
             </p>
           </section>
         </Link>
-        <Link to={'/para-empresas'}>
+        <Link to={'/para_empresas'}>
           <section className="flex items-start p-[0.5em] gap-[0.5em]">
             <p className="text-[0.9em] not-italic font-semibold leading-[0.1em]">
               Para empresas
             </p>
           </section>
         </Link>
-        <Link to={'/sobre-nosotros'}>
+        <Link to={'/sobre_nosotros'}>
           <section className="flex items-start p-[0.5em] gap-[0.5em]">
             <p className="text-[0.9em] not-italic font-semibold leading-[0.1em]">
               Sobre nosotros
