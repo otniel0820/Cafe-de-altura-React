@@ -2,6 +2,7 @@ import React from 'react'
 import bgTerminos from '../assets/bgTerminos.jpg'
 import { Link } from 'react-router-dom'
 
+
 const TerminosCondiciones = () => {
   return (
     <div className='min-h-screen bg-cover bg-no-repeat bg-center flex justify-center items-center ' style={{backgroundImage:`url(${bgTerminos})`}}>
@@ -27,6 +28,7 @@ const TerminosCondiciones = () => {
         <button className='flex py-[0.75em] pl-[1.5em] pr-[1.8em] items-start gap-[0.5em] rounded bg-[#2A5B45] text-[0.9em] not-italic font-semibold text-[#fff]'>Inicio</button>
         </Link>
       </div>
+     
     </div>
   )
 }

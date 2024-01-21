@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import Button from "./Button";
 import { useForm } from "react-hook-form";
@@ -9,8 +8,6 @@ const Form = () => {
     handleSubmit,
     formState: { errors },
     trigger,
-    control,
-    watch,
     reset,
   } = useForm();
 
@@ -80,7 +77,7 @@ const Form = () => {
                 message: "Este campo es rquerido",
               },
               pattern: {
-                value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+                value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g,
                 message: "Correo no valido",
               },
             })}
@@ -101,12 +98,12 @@ const Form = () => {
           >
             Teléfono
           </label>
-          <div className="flex  w-full box-border border-solid border-[1px] border-[#D1D5DB] shadow-sm focus:outline-[#3F8F6B] rounded-[6px]">
+          <div className="flex  w-full box-border border-solid border-[1px] border-[#D1D5DB] shadow-sm shadow-red focus-within:border-[#3F8F6B] focus-within:border-[3px] rounded-[6px]">
             <select
               name="codigo"
               {...register("codigoArea")}
               id="telefono"
-              className="flex h-[2.5em] py-[0.56em] px-[0.81em] items-center  border-0 focus:outline-none text-[#111827] rounded-[6px]"
+              className="flex h-[2.5em] py-[0.56em] px-[0.81em] items-center border-0 focus:outline-none text-[#111827] rounded-[6px]"
             >
               <option value="+1">US</option>
               <option value="+34">ES</option>
@@ -147,7 +144,7 @@ const Form = () => {
                 message: "Este campo es requerido",
               },
               minLength: {
-                value: 20,
+                value: 2,
                 message: "Debe contener al menos dos caracteres",
               },
               maxLength: {
