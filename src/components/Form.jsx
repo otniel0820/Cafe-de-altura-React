@@ -13,9 +13,7 @@ const Form = () => {
 
   const onSubmit = handleSubmit((data) => {
     let actualForm = JSON.parse(localStorage.getItem("info")) || [];
-    if (!Array.isArray(actualForm)) {
-      actualForm = [];
-    }
+  
     actualForm.push(data);
     localStorage.setItem("info", JSON.stringify(actualForm));
     alert("Enviando formulario...");
@@ -51,10 +49,11 @@ const Form = () => {
                 value: 20,
                 message: "Este campo puede tener maximo 20 caracteres",
               },
+              onBlur: () => trigger("nombre")
             })}
             id="nombre"
             className="flex h-[2.5em] py-[0.56em] px-[0.81em] items-center rounded-[6px] border-solid border-[1px] border-[#D1D5DB] shadow-sm w-full focus:outline-[#3F8F6B]"
-            onBlur={() => trigger("nombre")}
+            
           />
           {errors.nombre && (
             <span className="text-[red] text-[0.7em]">
@@ -80,10 +79,11 @@ const Form = () => {
                 value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g,
                 message: "Correo no valido",
               },
+              onBlur:() => trigger("email")
             })}
             id="email"
             className="flex h-[2.5em] py-[0.56em] px-[0.81em] items-center rounded-[6px] border-solid border-[1px] border-[#D1D5DB] shadow-sm w-full focus:outline-[#3F8F6B]"
-            onBlur={() => trigger("email")}
+            
           />
           {errors.email && (
             <span className="text-[red] text-[0.7em]">
@@ -121,11 +121,12 @@ const Form = () => {
                   value: /^[0-9!@#$%^&*()_+[\]{};:'"<>,.?/~\\-]+$/,
                   message: "Este campo solo puede tener numeros y simbolos",
                 },
+                onBlur:() => trigger("telefono")
               })}
               id="telefono"
               className="flex h-[2.5em] py-[0.56em] px-[0.81em] items-center border-0 focus:outline-none  w-full rounded-[6px]"
               placeholder="+1 (555) 987-6543"
-              onBlur={() => trigger("telefono")}
+              
             />
           </div>
           {errors.telefono && (
@@ -151,12 +152,13 @@ const Form = () => {
                 value: 200,
                 message: "Este campo puede tener maximo 20 caracteres",
               },
+              onBlur:()=>trigger('messageArea')
             })}
             cols="60"
             rows="10"
             className="flex h-[7.6em] py-[0.56em] px-[0.81em] items-center rounded-[6px] border-solid border-[1px] border-[#D1D5DB] shadow-sm w-full focus:outline-[#3F8F6B] mt-[2.75em]"
             placeholder="¿En qué podemos ayudarte?"
-            onBlur={()=>trigger('messageArea')}
+            
           ></textarea>
         </div>
         {errors.messageArea && (
@@ -175,9 +177,10 @@ const Form = () => {
                   message:
                     "Debe aceptar las politicas de privacidad y los Terminos y condiciones",
                 },
+                onBlur:()=>trigger('politicas')
               })}
               className="w-[1em] h-[1.25em] border-[#D1D5DB] accent-[#2A5B45]"
-              onBlur={()=>trigger('politicas')}
+              
             />
             <label
               htmlFor="politicas"
